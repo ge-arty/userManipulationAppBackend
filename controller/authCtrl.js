@@ -89,7 +89,7 @@ const updateUserCtrl = expressAsyncHandler(async (req, res) => {
 });
 
 const blockOrUnblockUserCtrl = expressAsyncHandler(async (req, res) => {
-  const { _id } = req.user;
+  const { _id } = req.query.id;
   validateMongodbId(_id);
   const { isBlocked } = req.body;
   const blockedOrUnblockedUser = await User.findByIdAndUpdate(
@@ -107,7 +107,7 @@ const blockOrUnblockUsersCtrl = expressAsyncHandler(async (req, res) => {
       filter: { _id: user.id },
       update: { $set: { isBlocked: user.isBlocked } },
     },
-  }));
+  })); // {blockOrUnblockUsers: [ {isBlocked: true: id: 123}] }
 
   try {
     const result = await User.bulkWrite(updates);
