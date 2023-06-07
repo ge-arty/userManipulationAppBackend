@@ -90,7 +90,7 @@ const updateUserCtrl = expressAsyncHandler(async (req, res) => {
 
 const blockOrUnblockUserCtrl = expressAsyncHandler(async (req, res) => {
   const idString = req.params.id;
-  console.log("id from params", _id);
+  console.log("id from params", idString);
   console.log("blockOrUnblockUserCtrl", req);
 
   const _id = new ObjectId(idString);
