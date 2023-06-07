@@ -2,6 +2,7 @@ const User = require("../model/auth");
 const generateToken = require("../config/jwtToken");
 const expressAsyncHandler = require("express-async-handler");
 const validateMongodbId = require("../util/validateMongodbId");
+const mongoose = require("mongoose");
 
 const userRegisterCtrl = expressAsyncHandler(async (req, res) => {
   const { email, firstName, lastName, password } = req.body;
@@ -93,6 +94,7 @@ const blockOrUnblockUserCtrl = expressAsyncHandler(async (req, res) => {
   console.log("id from params", idString);
   console.log("blockOrUnblockUserCtrl", req);
 
+  var ObjectId = mongoose.Types.ObjectId;
   const _id = new ObjectId(idString);
 
   console.log("_id", _id);
