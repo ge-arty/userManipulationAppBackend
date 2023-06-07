@@ -89,7 +89,8 @@ const updateUserCtrl = expressAsyncHandler(async (req, res) => {
 });
 
 const blockOrUnblockUserCtrl = expressAsyncHandler(async (req, res) => {
-  const { _id } = req.query._id;
+  console.log("blockOrUnblockUserCtrl", req);
+  const { _id } = req.query.id;
   validateMongodbId(_id);
   const { isBlocked } = req.body;
   const blockedOrUnblockedUser = await User.findByIdAndUpdate(
