@@ -91,13 +91,9 @@ const updateUserCtrl = expressAsyncHandler(async (req, res) => {
 
 const blockOrUnblockUserCtrl = expressAsyncHandler(async (req, res) => {
   const idString = req.params.id;
-  console.log("id from params", idString);
-  console.log("blockOrUnblockUserCtrl", req);
 
   var ObjectId = mongoose.Types.ObjectId;
   const _id = new ObjectId(idString);
-
-  console.log("_id", _id);
 
   validateMongodbId(_id);
   const { isBlocked } = req.body;
